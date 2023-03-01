@@ -1,4 +1,5 @@
-uberbot
+cmd/uberbot/uberbot
+cmd/uberbot/guilds
 .env
 guilds/*.json
 .vscode
