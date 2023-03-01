@@ -1,0 +1,8 @@
+uberbot
+.env
+guilds/*.json
+.vscode
+.idea
+.fleet
+.DS_Store
+/commands/test/
