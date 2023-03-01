@@ -8,10 +8,9 @@ uberbot is a custom bot written in discordgo. It has a custom data handler, comm
 Some main features of uberbot are moderation and meme like functions
 
 ## Dependencies
-* Go 1.16
-* Custom [discordgo](https://github.com/bwmarrin/discordgo) [fork](https://github.com/qpixel/discordgo) <!--Try to switch back to the old one sooner than later-->
+* Go 1.18
 * OrderedMap
-* GodotEnv
+* godotenv
 * [tinylog](https://github.com/ubergeek77/tinylog)
 
 ## Development
@@ -24,10 +23,6 @@ Make sure you have an ssh key attached to github and have configured it with git
 ```sh
 git clone git@github.com:<username>/uberbot.git
 cd uberbot
-```
-2. Update submodules
-```sh
-git submodule update --init --recursive
 ```
 3. Resolve dependencies
 ```sh
