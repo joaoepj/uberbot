@@ -9,19 +9,20 @@ jobs:
         uses: actions/setup-go@v2
         with:
           go-version: 1.18
-      - name: Format Code
+      - name: Checkout
         uses: actions/checkout@v2
+      - name: Format
         run: go fmt ./...
-      - name: Vet Code
+      - name: Vet
         run: go vet ./...
-      - name: Lint Code (PR)
+      - name: Lint (PR)
         uses: golangci/golangci-lint-action@v2.5.2
         if: github.event.name == 'pull_request'
         with:
           only-new-issues: true
           skip-pkg-cache: true
           skip-build-cache: true
-      - name: Lint Code (Push)
+      - name: Lint (Push)
         if: github.event.name != 'pull_request' # See https://github.com/golangci/golangci-lint-action/issues/362
         run: |
           curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.43.0
