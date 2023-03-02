@@ -1,13 +1,13 @@
 package core
 
 import (
-	"github.com/QPixel/orderedmap"
+	"encoding/json"
 	"runtime"
 	"runtime/debug"
-
 	"strings"
 	"time"
 
+	"github.com/QPixel/orderedmap"
 	"github.com/bwmarrin/discordgo"
 )
 
@@ -156,7 +156,8 @@ func AddSlashCommands(guildId string, c chan string) {
 		if err != nil {
 			c <- "Unable to register slash commands :/"
 			log.Errorf("Cannot create '%v' command: %v", v.Name, err)
-			log.Errorf("%s", v.Options)
+			marshalOptions, _ := json.Marshal(v.Options)
+			log.Errorf("%s", string(marshalOptions))
 			return
 		}
 	}

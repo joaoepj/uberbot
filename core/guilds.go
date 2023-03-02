@@ -1,6 +1,7 @@
 package core
 
 import (
+	"encoding/json"
 	"errors"
 	"strings"
 	"sync"
@@ -256,7 +257,8 @@ func (g *Guild) MemberOrRoleInList(checkId string, list []string) bool {
 
 	// Check if the ID represents a role
 	role, err := g.GetRole(checkId)
-	log.Infof("Role %s", role)
+	marshalRole, _ := json.Marshal(role)
+	log.Infof("Role %s", string(marshalRole))
 	if err == nil {
 		// This is a role; check if this role is in the list
 		for _, mod := range list {
@@ -1091,7 +1093,7 @@ func (g *Guild) GetMap(key string) (map[string]interface{}, error) {
 }
 
 // GetCommandUsage
-//// Compile the usage information for a single command, so it can be printed out.
+// // Compile the usage information for a single command, so it can be printed out.
 func (g *Guild) GetCommandUsage(cmd CommandInfo) string {
 	// Get the trigger for the command, and add the prefix to it
 	trigger := g.Info.Prefix + cmd.Trigger

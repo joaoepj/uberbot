@@ -11,7 +11,7 @@ func guildCreate(s *discordgo.Session, evt *discordgo.GuildCreate) {
 	// the guild we get from this event isn't updated, idk why it's a pointer
 	g, err := s.State.Guild(evt.ID)
 	if err != nil {
-		core.Log.Errorf("unable to find guild %s (%s). maybe race condition?")
+		core.Log.Errorf("unable to find guild %s (%s). maybe race condition?", evt.Name, evt.ID)
 		return
 	}
 	if core.GuildExists(g.ID) {
