@@ -4,6 +4,7 @@ on:
 
 name: CI
 
+
 jobs:
   format:
     runs-on: ubuntu-latest
